@@ -1,2 +1,2 @@
-# python_mine-projects
+# python_projects
 IBM_python for data science ( beginer programers )
