@@ -1,2 +1,2 @@
-# python_projects
-IBM_python for data science ( beginer programers )
+# Python projects
+Python for Data Science offered by " IBM "
