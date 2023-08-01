@@ -1,2 +1,3 @@
 # Python projects
-Python for Data Science offered by " IBM "
+Python for Data Science & GUI based.
+GUI Based calculator programing.
