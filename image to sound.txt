@@ -1,0 +1,31 @@
+import numpy as np
+import imageio
+import soundfile as sf
+
+# Load an image (replace 'image.jpg' with your image file)
+image = imageio.imread('image.jpg', as_gray=True)
+
+# Normalize pixel values to the range [0, 1]
+image = image / 255.0
+
+# Define audio parameters
+sample_rate = 44100  # Samples per second
+duration = 5.0  # seconds
+
+# Generate a simple audio signal based on image data
+t = np.linspace(0, duration, int(sample_rate * duration), endpoint=False)
+frequency = 440.0  # Hz (adjust as needed)
+audio_data = np.sin(2 * np.pi * frequency * t)
+
+# Map the image data to audio amplitude
+amplitude_data = np.interp(t, np.linspace(0, duration, len(image), endpoint=False), image)
+
+# Combine the audio signal and image-based amplitude
+final_audio = audio_data * amplitude_data
+
+# Normalize the audio to prevent clipping
+final_audio = np.int16(final_audio / np.max(np.abs(final_audio)) * 32767)
+
+# Save the audio to a WAV file
+sf.write('image_audio.wav', final_audio, sample_rate)
+
